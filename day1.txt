@@ -1,0 +1,239 @@
+Why Angular ??? 
+	-- Framework
+	-- Front end -- develop separately
+	-- full stack -- front end, server, database
+	-- MEAN ; Mongodb; Express and Nodejs; Angular; all are based on js
+	-- 3 important parts
+		-- data
+		-- View or template
+		-- Sync between the view and template
+			-- Binding techniques
+			-- One way data binding
+				-- Between the model to view 
+				-- Between the view to model
+			-- Two way data binding
+				-- Between model and view
+	--Dynamic elements,Response time
+	--Responsive web page
+	--SPA --Single page applications;  one index.html file . Based on routing/user interaction -- load different content in the same html page -- React,Angular,Vue
+	-- App loading time ; Initial load time -- time taken for the app to load in the browser -- optimise the app size bundle ; bigger the size longer the time
+	-- Request/response time
+		-- user click on button -- req/res time -- optimise 
+	-- Speed 
+		faster 
+			-- detection policy -- fast
+			-- size of bundle -- uglification, minification, compression, bundling -- optimise
+			-- req/response time ; debounce, retry -- http 
+	-- MVC / MVVM architecture
+		MVC -- Model, View,Controller
+			Model -- data 
+			View -- template /UI
+			Controller -- Bridge between the view and model. SYNC the model and view
+		MVVM -- Model View ViewModel
+			Model -- data 
+			View -- template /UI
+			ModelView -- SYnc between the model and view ;
+			Component based architecture 
+	-- Component based architecture
+		-- Multiple components -- 3parts-- View, have some model data, keep it ion sync
+		-- Directives -- transform the html elements
+		-- Pipes -- Transformation on data for display purpose
+		-- Services -- Business logic; Inject these services (Dependency injection)
+		-- Modularity; Component -- serve a single purpose
+		-- Reusability
+		-- Unit testing
+			Built in of angular app
+			Karma framework and jasmine 
+			Testing of front end alone without the server  
+			testing only a single module/component/service/directive
+			testing their respective modules seperately		
+			integrate the various modules -- working correctly as a single unit	
+			test the integration between the front end and server
+			
+	-- Routing
+		-- Server side routing
+			-- routing will be done by the server 
+		-- Client side routing
+			-- routing at the front end only
+		-- Lazy loading of component/route
+			-- loading the route only when the route is clicked and not on the initial load
+			-- Advantages
+			1. faster initial load -- route content is not there is in the initial load; smaller app size
+			2. Route may not be clicked -- no need to upload the contents
+			3. 
+		-- Route guards
+			-- Interceptors
+			-- Based on some conditions -- allow /disallow the routing
+			-- Form -- filled the form -- refresh the page -- Are u refresh the page -- 
+
+
+Example 1:
+Scenario 1:
+	Register page -- Filled up the form correctly -- submit button -- post req to server-- server has completed the validations -- server response -- json response with the successful/unsuccessful registration -- client populate the response; -- client has to route the login page 
+Scenario 2:
+Register page -- Filled up the form correctly -- submit button -- post req to server-- server has completed the validations -- server response --based on the successful/unsuccessful registration -- server will route the login page /error page
+Best approach : Scenario 2; server side routing
+
+
+Example 2: 
+Click on a menu item --
+Scenario 1:
+	Based on the menu link clicked -- on the client side itself the new content should be loaded; NO request response cycle
+Scenario 2:
+	Menu clicked; send the request to server; server does the routing; client populate the response
+Best approach : Scenario 1; client side routing; faster 
+
+
+	-- Forms Validations
+		-- Client side validations
+			-- Limitations of data type of data
+			-- Required
+			-- Size of data
+			-- Strong password check, email pattern check
+			-- Password and confirm password should match
+			-- SQL injections
+			-- Business rule validations
+				email -- should be dnb email id 
+
+		-- Server side validation
+			-- Login credentials
+			-- Token validations
+			-- Username should already not exists
+			-- SQL injections
+			-- Business validations
+
+			
+Angular installations:
+1. Node
+	npm will also be installed
+2. Install cli
+	npm install -g @angular/cli -- latest version
+	npm i @angular/cli@16.0.0
+
+ng not recognised:
+set PATH=%PATH%;C:\Users\Buddharajug\AppData\Roaming\npm
+
+Create a new project:
+ng new firstProject
+
+cd firstProject
+
+npm start
+
+Open browser
+http://localhost:4200
+
+typescript:
+
+javascript -- client side library 
+Browser -- html,css and js
+History of js -- ECMA script
+late 1980's --js came into existence
+Es1
+ES2
+ES3
+ES4
+ES5 -- late 1990's
+no version updates for a long period
+2015 -- ES2015 or ES6
+2016 -- Es2016 or ES7......
+
+Disadv of js:
+1. js is a weakly typed language; type inference
+var i=10;// number
+i="hello";//string 
+i=true;//Boolean
+
+var price="hello";// js is correct; logically --wrong 
+
+Requirement: js + strongly type language 
+
+2. Where is js compiled/interpreted/executed -- In the browser 
+	Syntax Errors in js -- browser console
+	Load js in the browser; load js in html -- to execute the js
+	Can i check the syntax errors in js without the browser -- No command to compile js outside the browser
+
+3. no version updates for a long period after late 1990's
+
+Angular started near 2010
+	-- disadv in js
+	-- js is needed
+	-- typescript came into existence
+		-- .ts
+		-- js+ additional features(classes,interfaces)
+		-- Compile ts files outside the browser
+		-- ts -- strongly typed language
+			var price:number=100.87;
+			price="hello";//syntax error
+			var i=100;// default data type : any
+			i="hello";//work
+		-- Is ts understood by the browser -- NO
+		-- translate to js
+		-- transpilation:	
+			Translation(from ts to js) and compilation(ts)	
+		-- Transpiler -- 		
+
+
+package.json
+	-- config file
+	-- list down the module dependencies of project
+		-- development dependencies
+		-- production dependencies	
+	-- semantic version of the dependencies
+		x.y.z
+		x -- version number
+		y -- major build
+		z -- minor build
+	-- Version
+		~
+		^
+
+When will package.json get modified
+
+npm install modulename
+-- Install the module
+	1. Store a local copy of module and its internal dependencies in node_modules folder
+	2. Add the module dependency in package.json
+	3. Add the exact version(of module and its internal dependencies) which it has intsalled in package.lock.json
+
+package.lock.json
+	-- Read only file
+	-- Optional file
+	-- Important file
+	1. Dependencies
+		-- Whats are its internal dependencies
+		-- Exact versions
+		-- From where it has downloaded
+	2. Optional -- metadata
+	3. Important -- 
+		Stages/environments in which project 
+		-- Versions are same 
+
+npm install 
+-- Install the dependencies mentioned in package.json and if package.lock.json is present -- install the exact version
+
+npm update modulename@versionnumber
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
