@@ -1,0 +1,126 @@
+angular.json
+	-- config file
+	-- Set up file for the angular project
+
+typescript -- transpile
+
+tsconfig.json 
+tsconfig.app.json
+tsconfig.spec.json -- Configuration file for Testing
+
+//In js
+var quantityInHand=0;
+function addTwoNumbersAndReturnTheSum(p1,p2)
+{
+	return p1+p2;
+}
+var result=addTwoNumbersAndReturnTheSum(20,30);
+console.log("Result",result);
+
+// Are my variable and function names clear and self explanatory
+// Indendation -- readability for human 
+// maintanence is easy
+// Code optimised(bundle size) -- NO
+Create the bundle 
+-- Uglification and minification:
+	-- Remove unwanted white spaces
+	-- Replace big names with smaller names
+	-- Reduce the size of file
+Scenario 1:
+	One single file -- 3mb
+Scenario 2:
+	Two files
+	One file -- 2.5mb
+	Second file -- .5mb
+	Parallel uploading
+
+index.html --> main.ts --> app.module.ts--> app.component.ts
+
+Module -- AppModule
+	-- Logical collection of components,directives, pipes,services and other modules
+
+Decorators
+	-- Start with a @ symbol
+	-- Transform the element on which it is added
+	-- Take in an object as parameter(optional)
+	-- Object will contain the metadata(some properties for it to work)
+	-- Import the decorator from the respective module
+
+Example
+@NgModule({
+	declarations: // all the components,pipes and directives,
+	providers: // all the services ,
+	imports:// all the other module dependencies,
+	bootstrap: // all the components which i want to start off with,
+	exports:// all the exports to be done from this module
+})
+class AppModule
+{
+}
+
+Component:
+	-- Associated with a template (view)
+	-- Associated with a class
+	-- Class to work like a component -- Add a decorator -- @Component
+	-- 4 files -- .ts, .css, .html, .spec.ts
+	-- ng generate component header
+	-- ng g c footer
+
+@Component({
+	selector:"app-root",
+	template:"<div><h1>Welcome to DNB</h1></div>"
+	or
+	templateUrl:"app.component.html",
+	styles:[]
+	or
+	stylesUrl:["app.component.css"]
+})
+class AppComponent{}
+
+
+Interpolation
+	-- {{}}
+	-- Display the string format of the data which is the model (in the component class)
+
+
+Angular 
+	-- separation of concerns; Have separate files
+	-- Follow the naming convention
+	-- Single purpose; One component should only do one task
+
+// Create a new folder with the componentName and add 4 files to it and use the default settings and update app.module.ts
+
+ng g c componentName
+
+//Configure the default settings -- Use predefined flags 
+ng g c componentName --selector dnb-footer
+
+ng g c componentName --prefix dnb
+
+
+Responsive web page
+	-- Based on width of screen
+	-- Write the css based on screen width; complex activity
+	-- Bootstrap
+	-- angular material
+	
+
+SEmantic versioning
+x.y.z
+
+~16.3.4
+	>=16.3.4 and <16.4
+^16.3.4
+	>=16.3 and <17.0
+
+Directive:
+	-- structural and attribute directive
+	-- structural directives
+		-- ngFor, ngIf, ngSwitch
+
+*ngFor
+	-- work with a for loop
+	-- transform(replicate) the structure
+			
+
+
