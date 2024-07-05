@@ -1,0 +1,86 @@
+Styles
+	-- External
+		-- Doing it in a separate file
+	-- Internal
+		-- Doing it in the same file but as part of header section
+	-- Inline
+		-- As part of element
+	-- Class
+		Giving the class name
+
+Priority:
+
+	Highest to lowest:
+		0. Bootstrap classes
+		1. Inline
+		2. Class
+		3. External 
+Don'ts
+	1. Never do inline styling
+		-- Maintanence
+
+Do's
+	1. Do bootstrap
+	2. Where bootstrap is not possible -- external styling
+
+
+var i=true;//boolean
+var j="true";//string
+if(i)
+	console.log("i has a true value");
+if(j==true)//condition checking is wrong
+	console.log("j has a true value")
+
+One way data binding:
+	a. Model --> View
+		data available in the model is sent to the view
+ 		1. Interpolation
+			Declared some model data in class component
+			Displayed model data in the view -- {{}}
+			String transformation of the data
+			-- No conditions allowed
+		2. Property /Attribute binding
+			--Use []
+			-- Enclose the attribute within square brackets
+			-- Angular binding from model to view
+
+	b. View --> Model
+		-- Data in the view should be stored in model available in component class
+		-- Event binding
+		-- Each and every html event will have a corresponding angular event
+			-- onclick -- click
+			-- onmouseover -- mouseover
+			-- ondblclick -- dblclick
+		-- Enclose the angular event within  paranthesis()
+		-- On the right hand side -- add/register the event handler
+		-- Define the event handler as part of class component
+Dynamic rendering:
+	-- *ngFor
+Conditional rendering:
+	-- *ngIf
+		-- Structural directive
+		Adding to the DOM or removing DOM
+		-- Changing the visibility -- NO
+		--Expecting a condition
+			-- If true ; contents will be added to the dom
+			-- If false; contents will be removed from the dom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
