@@ -1,0 +1,134 @@
+Components communication
+
+1. Parent to child communication:
+	Parent ---> Child
+	--Parent -- Home
+	-- Child -- AddToCart
+	Send some data from parent to child
+		-- Any type of data
+		-- Multiple data
+	In the parent component
+	1. As part of the opening tag of child component 
+		-- Declare a custom attribute
+		-- Assign to it the data which i want to send to the child
+		-- Enclose the custom attribute within square brackets
+	In the child component
+	2. Declare that we are going to be receiving some data
+		-- @Input decorator -- @angular/core
+		-- Data type of data
+		-- Use the same name as the custom attribute
+
+
+Lifecycle of component:
+--Lifecycle methods
+	-- Optional;
+	-- If present, they are executed
+	-- Constructor
+	-- 3 phases
+		-- Mounting phase, Updation phase, Unmounting phase
+	-- Mounting bootstrapping the component
+		-- Constructor
+		-- data from the parent is assigned to model of the child
+		-- Load the UI/view/template associated with that component
+		-- ....
+		-- OnInit
+
+
+Constructor
+	-- Lifecycle method
+	-- Implicitly invoked whenever an object of class is created or the component is mounted
+	-- Cannot Explicitly call it
+	-- First lifecycle method called as part of object creation(component is mounted)
+	-- No constructor overloading possible
+	-- Used for initialising the various variables
+	-- Will be called only once during the entire lifecycle of component
+
+Employee emp =new Employee(101,"sara");
+
+ngOnInit: 
+	-- lifecycle method
+	-- Optional
+	-- If present it will be invoked
+	-- Mounting phase
+	-- Implicitly invoked whenever an object of class is created or the component is mounted and the UI is loaded
+	-- Cannot Explicitly call it
+	-- Will be called only once during the entire lifecycle of component
+	-- Use case: 
+		Request to server, Third party subscriptions, start the timer...
+	-- Implement the OnOnit Interface
+
+
+Scenario 1: White screen -- wait for 2 mins -- entire page with the data loads
+
+Scenario 2: static content with template comes in -- at the background data is fetched -- after some time , page is populated with data;
+
+Scenario 2 is better;
+
+scenario 1: constructor -- request to api for data; once data is received -- then only UI is loaded
+scenario 2: constructor is called; UI is loaded ; request is sent to api; based on response UI is populated
+
+
+@Input decorator:
+	-- Add to a field which is expected to get data from parent
+	-- Take in a configuration object as a parameter (Optional)
+	-- Configuration object or metadata
+		-- required : Boolean
+			-- When the data has to come mandatorily from the parent
+		-- alias 
+			-- Alias name for the field
+		-- properties
+		-- transform
+			-- transform the data before storing it in the child model using a function
+			-- numberAttribute
+			-- booleanAttribute	
+
+
+
+Data 
+[{empId:101,empName:"Asha",salary:1001,deptId:"D1"},
+{empId:102,empName:"Gaurav",salary:2000,deptId:"D1"},
+{empId:103,empName:"Karan",salary:2000,deptId:"D2"},
+{empId:104,empName:"Kishan",salary:3000,deptId:"D1"},
+{empId:105,empName:"Keshav",salary:3500,deptId:"D2"},
+{empId:106,empName:"Pran",salary:4000,deptId:"D3"},
+{empId:107,empName:"Saurav",salary:3800,deptId:"D3"}]
+
+Send this data from parent to child, but the child should only display(work) those employees whose name has a r in it
+
+Possible solution:
+1. ngOnInit -- filtering
+2. child html -- filtering
+3. transform -- @Input property
+
+	-- before storing the data in the array -- filter out the elements
+	-- lesser memory footprint;(4 out of 7 )
+	-- work with those emp whose name has r
+
+
+Send static data of number data type to the child:
+<app-child ctr=0></app-child>
+
+Directives
+	-- Structural
+	-- Attribute directives
+		-- ngStyle, ngClass
+
+Summary:
+1. Component lifecycle methods -- constructor and ngOnInit 
+2. Parent -> Child communication
+3. @Input decorator
+	Only for sending data from parent to child
+	-- Functionalities
+4. Attribute directive -- ngStyle
+	ngStyle -- dynamic styling
+
+
+
+
+
+
+
+
+
+
+
