@@ -1,0 +1,92 @@
+In parentComponent.html
+<input type="button" value="submit" (click)="submitEventHandler(); />
+1. For event binding, enclose the angular event name within paranthesis as part of the opening tag
+2. Register the event handler on the right hand side of event binding
+3. Define the event handler in the corresponding ts file(parentComponent)
+4. User trigger the event -- by clicking the button; implicitly the event handler will be called/executed
+5. Because input is an inbuilt html element, we are working inbuilt html events
+
+
+Child to parent Communication:
+	-- Data/Control flow from child to parent
+	-- Similar to event binding
+
+In parentComponent.html
+<app-child (onUpdation)="onUpdationEventHandler();"
+></app-child>
+1. Add an event as part of opening tag of app-child and enclose within paranthesis
+2. Register the event handler on the right hand side of event binding
+3. Define the event handler -onUpdationEventHandler in the corresponding ts file(parentComponent)
+4. In child component -- trigger the event -- onUpdation; using the emit event; can pass some optional data as part of emit
+5. In Child component add @Output decorator to the field(same name as the custom event ) which is going to be an event and which is going to be triggered
+
+Emitting an event
+1. can i emit multiple values in a single emit statement - NO
+2. Can I emit no value -- YES
+3. Can i call the emit multiple times -- YES
+4. Can i have multiple event handlers for the same custom event -- NO
+
+In ProductManage
+1. Add the button click and event handler; 
+2. In the event handler -- pass the product clicked -- mount the child component conditionally
+3. Pass some data to the child
+4. In the child tag add the custom attribute to which the data is to be assigned
+In EditProductPrice 
+5. Add The @Input decorator
+6. Load the data in the text box
+7. Once the user clicks on the confirm button -- passing the new price to the parent
+
+
+
+Child component is already mounted
+Data from the parent to the child is changed;
+Child component displays the new data from the parent(NO unmounting and mounting of child component)
+Requirement
+	Whenever the data from the parent changes -- reassign quantitySelected to 1
+Where can i fulfill this requirement
+	-- Constructor -- NO (AddToCart is already mounted)
+	-- ngOnInit -- NO (AddToCart is already mounted and ngOnInit is one time method)
+	-- No buttons also available
+	-- transform -- Input decorator -- transform the value coming from parent; quantitySelected is only present in the child -- NO
+	-- eventHandler -- implicitly called -- NO
+	-- impliciltly called functions -- lifecycle methods
+
+Lifecycle methods:
+	-- mounting, updation, unmounting
+	-- mounting phase
+		--constructor,ngOnChanges,data from parent is assigned to @Input properties, UI will be updated, ngOnInit
+
+ngOnChanges:
+	-- Lifecycle method
+	-- Useful for doing transformation on the class properties based on the input properties received 
+	-- Implicitly invoked
+	-- Will be called multiple times (1 or more time)
+		-- First time after the constructor, before the ngOnInit
+		-- Whenever the input changes
+	-- Implement interface OnChanges; override the method ngOnChanges
+	-- Called during the mounting , updation phase
+	-- Usecase:
+		-- Data from the parent is changing -- perform sideeffects
+
+
+ngOnDestroy
+-- Lifecycle method
+	-- Implicitly invoked
+	-- Will be called only once
+	-- Called during the unmounting phase
+	-- Be called before the component is unmounted
+	-- Optional method lifecycle method
+
+Component -- (View, model)
+Constructor
+receive data from the parent @Input property
+transformation of class properties based on input which i have received -- ngOnChanges
+UI is loaded
+ngOnInit 
+
+Confirm button in AddTocart 
+	-- Click
+	1. Change the quantity in home component
+	2. Unmount the AddToCart component
+
+
