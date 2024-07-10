@@ -1,0 +1,91 @@
+Components communication
+	-- Parent To child -- using attributes and @Input
+	-- Child to parent -- using events and @Output
+	-- sibling communication(Home and Cart)
+		-- use the common parent
+			-- send data from child to parent; send data from parent to other child
+			-- send data from Home to App; send data from App to Cart
+	-- communication between 2 components
+		-- use the common parent and lift the state up to the common parent and send to the child
+		-- send data from AddToCart to Cart
+			1. send data from AddToCart to Home
+			2. send data from Home to App
+			3. send data from App To Cart
+	-- Two way data binding -- parent to child and child to parent ()
+	-- Services in angular
+	-- ngRx -- centralised management of data in the clientside
+
+Disadvantages of A3 to B4:
+	1. Increase the complexity
+		Many components have to be involved for sending the data
+	2. Many components have to perform additional tasks which is not needed for them
+	3. Any component in the flow can mutate the data
+		-- use confidential data -- NO
+	4. Data security is as risk
+
+Session storage and local storage
+	-- Storage available as part of browser
+	-- data is stored in form of key:value pairs
+	-- Viewable by the client
+	-- Modified by the client
+	-- Session storage -- only available during the session ; data is lost if the browser is closed
+	-- local storage -- persisting across browser sessions
+	-- Use case : store info which is not critical
+	-- Disadv :
+		-- Modified by the client
+		-- Confidential info -- NO
+		-- Products info -- client can modify the price -- NO
+
+
+Best way for communication b/w 2 components
+	-- Requirement in hand
+	-- b/w parent and child --> @Input
+	-- A3 and B4 
+		-- data -- sync, async, who else requires the data
+		1. services
+		2. ngRx 
+
+
+Pipes:
+	Transform the data on which pipe is applied
+	-- Inbuilt pipes
+		json, uppercase, lowercase, currency, decimal, number, date ,slice , async
+	-- Custom pipes
+	-- Pure pipes and impure pipes
+	-- Will use pipe symbol
+	-- can pass some parameters or arguments to the pipe
+	-- Where can the pipe be used
+		-- As part of interpolation
+		-- As part of directives
+
+Why custom pipes??
+	-- custom transformation
+	-- distance pass as parameters:kms, mtrs;
+	-- json data -- display certain fields
+	-- Name of pipe:
+Data type of data on which pipe is going to be applied
+Number of parameters, data type of parameters, optional, default value of params
+How to transform the data
+
+
+
+Custom pipe:distance pass as parameters:kms, mtrs;
+Questions: 
+Name of pipe: distance
+Data type of data on which pipe is going to be applied -- number
+Number of parameters, data type of parameters, optional, default value of params: 1 optional param of string; 
+How to transform the data; Assume distance kms; convert to mtrs; add the measurement unit to the number
+
+1. Generate a pipe called as distance
+ng g pipe distance
+2 files will be created -- distance.pipe.ts and distance.pipe.spec.ts
+update app.module.ts -- add the pipe as a declarations in meta data as @ngModule decorator
+2. Implement an interface PipeTransform and Override the transform method -- define how to do transformation
+
+Custom Pipe: json data -- display certain fields
+ Name of pipe: jsonFieldSelector
+Data type of data on which pipe is going to be applied -- object
+Number of parameters, data type of parameters, optional, default value of params -- one param -- array where the various fields are present
+How to transform the data -- filter out the unspecified fields
+	
+		
