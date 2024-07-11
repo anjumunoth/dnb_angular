@@ -1,0 +1,14 @@
+Custom pipe : Transformation of data
+
+Custom directive:
+	-- Directive will change the UI of element
+	ngFor -- dynamic rendering
+	ngIf -- conditional rendering
+	ngStyle == dynamically changing the styling
+	
+To create a custom directive
+ng g directive customBgColor
+	-- Create 2 files and update app.module.ts
+
+Component is also a directive
+	-- Special directive with a view associated with it
