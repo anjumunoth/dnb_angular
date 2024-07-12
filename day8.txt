@@ -1,0 +1,28 @@
+Structural directive:
+	-- Changes the structure of the element on which it is added
+	-- ngFor -- Replicate that structure
+Custom structural directive
+-- customTooltip
+
+
+One way data binding
+	-- View  to model
+	-- model to view
+
+Two way data binding
+	-- Any changes in view will update the model and any changes in model will update the view
+	-- Keep model and view in sync 
+	--Disadv or Limitation:
+		-- Costly process 
+			- Background running process, looking out for the changes 
+	-- ngModel
+	-- Dependency -- import FormsModule in app.module.ts and add it to the imports of NgModule decorator
+	-- Work with the input event and will do the attribute binding on the value field 
+	-- Use case:
+		-- Data in Forms
+		-- parent and child to be in sync
+			@Input -- parent to child communication -- attribute binding -- []
+			@Output -- child to parent communication -- event binding -- ()
+		
+	
+		
