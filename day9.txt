@@ -1,0 +1,96 @@
+Forms:
+	-- Collect data
+	-- Store it for future use
+	-- Validations and business logic
+	-- Why validations?
+		-- Presentation rules, business rules, authentication and authorisation
+		-- Inbuilt validations and custom validations
+	-- Where should the validations happen ??
+		-- Client side		
+			Data formatting, email, required, password and confirm password
+		-- server side
+			Business rules -- emaildomain confirmation; username confirmation existence,username and password validation; business logic checks, token validation, security checks
+	-- End result of validation 
+		-- Error messages
+		-- Success messages
+	-- 2 types of forms
+		Template driven
+		Model driven forms
+
+
+Template driven forms
+	-- Everything is done on the template -- html page 
+	-- based on ngModel
+	-- Imports -- FormsModule in app.module.ts
+	-- Create the form
+		-- Add a reference variable to the form and add ngForm to it
+			Angular will implicitly create the form group on the form 
+		-- Add the ngModel directive to each form control
+			Angular will know that its a form control
+			Angular will implicitly create a form control on the element on which the 
+ngModel directive is added 
+	-- Add the validations
+	-- Display the error messages if any
+
+When all the validations can be done
+	1. On clicking the submit button
+	2. When the control loses focus
+	3. As when the user is typing
+
+Register component:
+	-- Data to be collected
+		username,emailid, password,confirm password, address,phone number,country
+Form Controls:
+	Textboxes --username,emailid, password,confirm password, address,phone number
+	dropdown -- country
+Validations
+	-- Required : username,emailid, password,confirm password,country,address
+	-- email address -- domain and format
+	-- password -- strong password
+	-- password and confirm password should match
+	-- phone number -- format, numbers , 10 
+
+When to do the validations and display the error message
+	-- password -- strong password -- when the control loses focus
+
+Inbuilt Classes 
+	valid and invalid 
+		valid is true -- if it passes all the validation rules
+		valid is false-- if it fails one of the validation rules
+
+	dirty and pristine
+		dirty is false -- when the text box value is not changed
+		dirty is true -- value in text box has changed
+	touched and untouched
+		touched is true -- control has been visited and lost focus
+		touched is false -- control has not been visited
+
+
+Validations in template driven form:
+1. Add as a attribute
+2. For some validations we can pass values to the attributes
+
+Custom Validations:
+	Password is a strong password
+	-- Create a custom directives(attribute)
+	-- Implement an interface Validator interface and override the validate method
+	-- In the validate method, call the validatorFunction
+	-- In the directive, add the providers as part of the @Directive decorator
+		 providers:[
+    {provide:NG_VALIDATORS,useExisting:CheckPasswordStrengthDirective,multi:true}
+  ]
+
+
+Date of Birth
+	Validation: 
+		Not greater than today
+		Not lesser than 120 years from today
+
+	
+
+
+	
+
+	
+		
+
