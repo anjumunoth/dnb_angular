@@ -1,0 +1,34 @@
+Custom validator based on 1 fields -- as part of that element
+Custom validator based on 2 fields(password and confirmPassword) 
+	-- add directive Validator
+		form level
+-- Create a custom directives(attribute) for custom validation
+	-- Implement an interface Validator interface and override the validate method
+	-- In the validate method, call the validatorFunction
+	-- In the directive, add the providers as part of the @Directive decorator
+		 providers:[
+    {provide:NG_VALIDATORS,useExisting:CheckPasswordStrengthDirective,multi:true}
+  ]
+
+
+Advantages of template driven form
+	-- Validations can be specified as part of control itself
+	-- Form creation with validations is easy. Not so much of angular knowledge is required
+	-- 
+Disadvantages of template driven form
+	-- Complex way of adding custom validation -- Create a directive, create a function
+	-- Validations can be specified as part of control itself -- Can be confusing to understand if its a normal directive or directive validator; Validations gets mixed with the control. No separation of concerns
+	-- ngModel -- resource intensive -- sync the model and view; For each form control add the ngModel directive ; template driven form -- resource intensive
+	-- For a large form -- should be avoided(maintainability, resource)
+	-- All the controls are created implicitly -- testing  will be difficult
+
+Model driven form or reactive form 
+	-- Create the form controls, form group, add validations -- In the component class
+	-- Imports ReactiveFormsModule in imports metadata in @NgModule decorator in app.module.ts
+Create a form control
+username:new FormControl(default value, validators)
+
+		
+
+		
+
