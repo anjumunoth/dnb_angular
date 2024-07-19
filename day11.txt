@@ -1,0 +1,89 @@
+Model driven form
+	-- Complex forms (more form controls and more validations)
+	-- Testing is easier
+	-- Explicitly creating the controls and formgroup
+	-- Reactive form
+	-- As when the user is typing -- work on changes in data
+	-- Entire form in created in component class
+	-- Observables
+Template driven form
+	-- Resource intensive (ngModel -- data in sync -- background operations)
+
+Angular routing:
+	-- client side routing
+		-- routing take place on the client side
+	-- 1. change the address in the address bar
+	   2. Based on the address, load different contents in the same html page
+	-- As part of address
+		-- route details
+		-- parameters
+			dynamic values following a path route
+		-- query string
+			Start with a question mark; Contain key=value pairs. Each key,value pair separated by an &
+	-- Send some data
+	-- Retrieve data from address
+	-- Child routes
+	-- Route guards
+		-- Interceptors for routes
+			-- safeguard the route -- only allow routing on basis of some condition
+			-- Leaving a page -- ask the user for confirmation 
+
+Routing 
+1. Added the menu items. For each item, added the routerLink attribute and passed the route address
+	-- change the address in the address bar
+2. In the place where the various components should be loaded as part of routing, mounting an inbuilt Angular component router-outlet
+	<router-outlet></router-outlet>
+3. Based on address -- load the corresponding component
+app.routing.module.ts
+	-- Creation of the project == 2 questions == routing enabled ? ; styling ?
+	routing -- yes
+		-- Implicitly Create a file app.routing.module.ts 
+			-- @NgModule decorator:
+				metadata : imports and exports
+				imports -- module dependencies
+				exports -- what is to be exported from this module
+
+
+routes array:
+	-- array of the various route objects
+		Routes will follow first match win strategy
+		Always specify the specialised routes first and then the general routes
+	-- Each route objects
+		path: route path
+		component: Component to be loaded for the corresponding path
+		redirectTo : specify the path to which it should be redirected
+		
+
+https://www.amazon.com/s?k=prime+shopping+online&adgrpid=1345803845105422&hvadid=84113017769262&hvbmt=bb&hvdev=c&hvlocphy=150098&hvnetw=o&hvqmt=b&hvtargid=kwd-84113731858587%3Aloc-90&hydadcr=7667_13583992&msclkid=08a1bc376ac81a6f8d1adaad654cad8e&tag=mh0b-20&ref=pd_sl_2uux2hqbmz_b
+
+https://www.amazon.com/CLARKS-Womens-Breeze-Flip-Flop-Rose/dp/B07FKVWVZX/ref=sr_1_1?adgrpid=1345803845105422&dib=eyJ2IjoiMSJ9.PkxUzSs3gcKhwYh6bi9TNZ2JM0fge0MoO1wJK-wp8WFj00HgiX9XJU8Hjvoyxl4MMkUU7KgEmIxls4jPnaWiAJU6d4_-fy1_5TkcPujUPBI.jH6Osf6rdLjJj7z6a2Qs8q7IaFPrk-xwrzJ883-fVmI&dib_tag=se&hvadid=84113017769262&hvbmt=bb&hvdev=c&hvlocphy=150098&hvnetw=o&hvqmt=b&hvtargid=kwd-84113731858587%3Aloc-90&hydadcr=7667_13583992&keywords=prime+shopping+online&msclkid=08a1bc376ac81a6f8d1adaad654cad8e&qid=1721372660&rnid=2941120011&s=apparel&sr=1-1
+
+
+App
+	-- Contain multiple modules
+		-- AppModule -- Products
+		-- PayModule -- Wallet 
+	-- Routing is going to be associated with a specific module
+
+
+Timings:
+1. 4.5 hour -- 4 days Mon to Thurs ; 22,23,24,25th July
+	9:30pm to 2pm
+2. 5 hours -- 2 days
+	9 to 2
+	9:30 to 2:30
+
+Monday -- Routing, services
+Tuesday -- services ,http
+Wednesday -- rxjs
+ngrx
+
+
+
+
+
+
+
+
+
+
