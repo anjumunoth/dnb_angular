@@ -1,0 +1,121 @@
+Angular Routing
+Navigation from the component.ts
+	-- Dependency injection of 2 services related to routing
+		--Add it the constructor as a param
+		-- Router -- perform any routing tasks
+		-- ActivatedRoute -- information of the current route
+	
+Parameters
+	-- How to pass data as part of parameters
+		--Navigate method and pass parameters ad part of the pathArray
+		-- Menu links
+	-- How to retrieve data from the parameters
+		2 ways
+		normal way
+			-- this.route.snapshot.params?.['pId']
+		from v16 onwards
+			-- In app.routing.module.ts
+			added the config object as part of forRoot method
+imports: [RouterModule.forRoot(routes,{bindToComponentInputs:true})],
+			-- To access the params use the @Input decorator
+
+What all not to send as part of params
+	-- Objects
+	-- Confidential information
+
+Communication between 2 components
+	-- Home and ProductDetails -- Using routing
+	1. In the home component
+		-- as part of navigate method , passed the data as part of second parameter's state obj
+		this.router.navigate(["/productDetails",selectedProduct.productId],
+      {state :{selectedProduct:selectedProduct}}
+    )
+	2. In productDetails :
+		 var navigationObj=this.router.getCurrentNavigation();
+    console.log("NavigationObj",navigationObj);
+    this.selectedProduct=navigationObj?.extras.state?.['selectedProduct'] || null;
+
+Child routing
+/payments/paymentsByNetBanking
+
+/paymentsByNetBanking
+
+
+Passing some data from A3 to B4
+A3->A2->A1->App->B1->B2->B3->B4
+	-- Has a lot of problems
+Common store -- Lot of efforts and processes
+	A3-- save data in store
+	b4 -- retrieve the data in store
+Services
+	A3-- save data in Service
+	b4 -- retrieve the data in Service
+	A3 and B4 should access the same instance of the service 
+
+Why services?
+	1. Data communication between 2 components
+	2. data shared among different components
+	3. data persistence
+	4. api calls
+	5. business logic
+
+Services and dependency injection (DI)
+	-- Service is injected
+	-- Same instance
+	-- One instance of service
+	-- Singleton class (Singleton Design pattern)
+		-- Will be only one instance of the class
+			
+		Create an object 
+		-- check if there is an instance
+			-- yes ; return the instance
+			-- no; create a new instance
+	-- Follow the singleton design pattern
+	-- Angular using DI -- maintain the singleton design pattern
+	-- Service injected at any one of 3 levels 
+		1. Project level
+		2. Module level
+		3. Component level
+
+Inject a service at project level: There will be only one instance of service for the entire project;
+		-- Default configuration
+		-- Single instance will be available to all the modules and components 
+		-- Only one instance shared by all the modules and components of the entire project
+	
+@Injectable({
+  providedIn: 'root'
+})
+
+Advantage : 
+	--Persistence of data across modules 
+	-- data will be persisted during the lifetime of application
+
+Inject a service at Module level:
+
+Inject a service at Component level
+	-- Same or single instance will be available only for that component
+	-- Other components may also inject the service. But they will work with another instance
+Pointers:
+	-- Persistence of data is only for that component
+	-- data will be persisted during the lifetime of that component only
+
+
+
+
+ng g service productsManagement
+2 files will be created
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+	
