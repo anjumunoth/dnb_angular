@@ -1,0 +1,91 @@
+Dependency Injection and Services
+	-- Create a service
+		-- @Injectable Decorator has to be added 
+			-- Optional metadata 
+				providedIn:'root'
+				Injecting the service at application level
+				-- Same service instance is shared by all modules and components
+	-- Work with a service
+		-- Create an instance of service as part of constructor's params
+	-- Call the various utilities available of the service
+
+Inject a service at component level:
+	-- Add the providers and service to be injected as part of @Component's metadata
+	-- Scope of service object is tied to the scope of respective component only
+	-- Data is persisted in that component only
+
+Inject a service at module level:
+	-- Add the service as part of providers in @NgModule decorator
+	-- For only that module there will be only instance of the service created
+
+
+Employee emp=new Employee(101,"sara");
+
+In Angular : creating an object of component class
+<app-products></app-products>
+Angular will create an object and call the constructor implicitly and provide the object references of the services it requires
+-- Specify in the constructor the various service dependencies of component
+
+
+Services:
+-- Store the user information
+-- Store the products information
+	-- Multiple components work with the same data
+	-- Persistence of data
+-- Communication between 2 components using services
+
+
+var i=10;
+function incCtr()
+{
+	i++;
+	console.log(i);
+}
+incCtr();//Console: 11; First printing and then changing to 100; 
+i=100;
+console.log(i);
+
+Send a video(2 hours) as response from server;
+	-- Send the entire video in a single shot
+	-- Break the video into chunks and send it chunk by chunk;
+		-- Once the first chunk is recd, user can start watching
+		-- While watching, at background, u will send the other chunks
+
+One Request -- One response ; response chunked 
+Streams -- send data as streams
+
+
+rxjs 
+	-- Reactive extensions for java script
+	-- Observables
+	-- Subject
+	-- Behaviour subject
+
+Data -- coming at one shot; stream
+stream of data -- how are u going to access, how to store; how to know the stream has started/ended
+
+Streams and Observables
+	3 functions: Either complete will be called or error will be called
+	next: Pass a value; Called multiple times; Can be sync or async
+	complete: Notify that there will be no more data; Will be called only once; Store it db; populate the UI
+		Scenario 1: call next after complete; Ignore the next call ;  
+	error : Whenever there is an error 
+
+
+1. Are data shared among the various subscriptions of the same observable; or they are different data -- Data sent from an observable -- by copy or by reference	; Each subscription is independent
+
+Arithmetic operators: +,-,*, /
+
++ operators : Data type of operands: Number, string
+* operators : Data type of operands: Number
+
+
+rxjs Operators:
+
+Creation operators: Used for creating the observable
+
+
+
+
+
+
