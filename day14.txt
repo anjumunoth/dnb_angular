@@ -1,0 +1,136 @@
+rxjs :
+subscribe method:
+	--1st param Either be an observer or next
+	Observer -- Collection of callbacks(next,completeand error)
+	next's callback
+		
+
+Operators:
+Creation operators:
+1. from 
+	-- Take in an array of values
+	-- Return an observable
+
+2. of
+	-- Take multiple values
+	-- Return an observable
+
+3. interval
+	Creates an Observable that emits sequential numbers every specified interval of time
+	interval(periodinMs)
+
+4. range(start,count)
+	Creates an Observable that emits sequential numbers in specified range
+	range(500,10);// emit 500...510
+	range(500);// emit from 500....
+
+ls | grep 
+
+Pipe:
+	Can call pipe only on an Observable. Return an observable
+
+map
+switchmap
+filter
+mergemap
+catchError
+retry
+retryWhen
+tap
+delay
+find
+
+switchMap:
+	Create an inner observable for the values emitted from the source Observable
+
+
+map and find
+map -- 
+
+catchError:
+var arr1=["red","green",{empId:101},"cyan"];
+    var myObservable10=new Observable((subscriber)=>{
+      for(let i=0;i<arr1.length;i++)
+      {
+        subscriber.next(arr1[i]);
+      }
+      
+    })
+
+    myObservable10.subscribe((value:any)=>{
+      //console.log("MyObservable10 : ",value.toUpperCase());
+      of(value).pipe(
+        map(item=> item.toUpperCase()),
+        catchError((err)=>of(value))
+      ).subscribe(value=>console.log("MyObservable10 : ",value));// emits "RED","GREEN",{empId:101},"CYAN"
+
+    })
+
+retry:
+	-- If the source Observable calls error, this method will resubscribe to the source Observable for a maximum of count resubscriptions rather than propagating the error call.
+	-- have to use as part of pipe
+	retry(count);
+
+casting : Unicasting
+	Multicasting
+
+
+Subject :
+	Multi casting 
+	producer and Consumer 
+	Observable + Observer
+	Call the next method + Use the callback for the next method
+	data shared across components	 
+
+var ctr:Subject<number>=new Subject<number>();
+ctr.next(100);
+ctr.next(101);
+ctr.subscribe(()=>{})
+
+BehaviourSubject: Subject with a default value;
+isloggedIn:BehaviourSubject<boolean>=new BehaviourSubject<boolean>(false);
+
+
+Promises
+	-- async operation
+	-- process take some time (0 or many ms)
+	-- capture the result of async op
+	-- Async op can be successful or failure
+	-- can be in 4 stages -- 
+		pending -- async op is running
+		resolved -- async op is successfully completed
+		rejected -- async op has completed with an error
+		fulfilled -- promise is either resolved or rejected
+	-- When the async op is going to get over -- unknown 
+
+Difference between promise and Observable
+Promise 
+	-- Maximum it can return a single value
+	-- No subscription required
+Observables 
+	-- Can return 0 or more values
+	-- Executed only when subscribed to
+
+
+
+Route guards:
+	
+	-- Interceptors for the routing process
+	-- canActivate
+		allow/disallow the route
+		-- return true -- allow the routing
+		-- return false -- disallow the routing and stay in the same page
+	-- canDeactivate
+		-- whenever the user is going to navigate away from a route -- do some processing
+	-- canLoad
+	-- CanActivateChild
+	-- CanMatch
+	-- Generate a route guard
+		-- what type of guard to be created
+		-- ng g guard checkLoggedIn
+	-- Add the guard to the specific route in app.routing.module file in the routes array
+	-- Add same guard to multiple routes
+	-- Add multiple guards to the same route
+
+
+
