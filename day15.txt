@@ -1,0 +1,65 @@
+Route Guards:
+< v15 -- guards created as classes and implements the interface based on what type of guard to be created
+v15 onwards -- guards are functions; will use inject();
+If all guards return true, navigation continues. If any guard returns false, navigation is cancelled. If any guard returns a UrlTree, the current navigation is cancelled and a new navigation begins to the UrlTree returned from the guard.
+	-- Multiple route guards will be executed in the order specified.
+-- canActivate Route guard
+-- canDeactivate Route guard
+	-- do some processing before leaving the current route
+	-- Use cases: 
+		1. On any form, if there are unsaved Changes
+		2. On payments page, check before redirection -- ask for confirmation before leaving
+		-- yes ; allow navigation
+		-- no; stay on the same page
+		3. Link -- clicking on link -- ask the user for confirmation
+		4. 
+
+-- canActivateChild Route guard
+
+Cart --> Payments 
+Under 2 conditions:
+	-- User logged In
+	-- Products in the cart
+
+Child route 
+	-- User logged In
+	-- products in the cart
+	-- 
+v17 Deprecated
+canMatch, canLoad, resolve
+v17 Additions
+
+Scenario:
+Products component : productsArr -- coming from the db;
+request to the db -- service method 
+call this service method in the component -- ngOnInit
+
+Scenario 2:
+Products component : productsArr -- coming from the db;
+guard -- prefetch the data
+navigate to products -- have the prefetched data; component will load with the data quickly;
+
+
+
+
+Connecting to the server API
+	-- 1. Imports HttpClientModule
+		in app.module.ts in the imports metadata
+	-- 2. various methods
+		GET -- get some data from server; eg: productsArr
+		POST -- send/save data in the server; register,login
+		PUT -- update the data; update productsArr, update cartArr
+		DELETE -- delete the info
+	--3. Header Information
+	--4. Response
+		-- handle the response
+		-- data, statusCode, response headers
+	--5. Response -- success: populate the UI, failure (retry-- ?,error)
+	--6. Pagination, Sorting, Filtering
+	--7. Debouncing
+
+
+
+
+
+	
