@@ -1,0 +1,154 @@
+Get request
+	-- Optional query parameters
+	-- parameters
+	-- Set up header information
+
+DebounceTime:
+Emits a notification from the source Observable only after a particular time span has passed without another source emission.
+
+It's like delay , but passes only the most recent notification from each burst of emissions.
+
+
+
+debounceTime delays notifications emitted by the source Observable, but drops previous pending delayed emissions if a new notification arrives on the source Observable. This operator keeps track of the most recent notification from the source Observable, and emits that only when dueTime has passed without any other notification appearing on the source Observable. If a new value appears before dueTime silence occurs, the previous notification will be dropped and will not be emitted and a new dueTime is scheduled. If the completing event happens during dueTime the last cached notification is emitted before the completion event is forwarded to the output observable. If the error event happens during dueTime or after it only the error event is forwarded to the output observable. The cache notification is not emitted in this case.
+
+This is a rate-limiting operator, because it is impossible for more than one notification to be emitted in any time window of duration dueTime, but it is also a delay-like operator since output emissions do not occur at the same time as they did on the source Observable. Optionally takes a SchedulerLike for managing timers.
+
+Example
+Emit the most recent click after a burst of clicks
+
+import { fromEvent, debounceTime } from 'rxjs';
+
+const clicks = fromEvent(document, 'click');
+const result = clicks.pipe(debounceTime(1000));
+result.subscribe(x => console.log(x));
+
+ngRx:
+	angular way of working with Redux 
+	-- state management
+	-- centralised way of managing/storing the data
+	-- state management at client side
+	-- store/get/persist the data in the db -- then why ngrx ?
+		-- 1. state management at client side-- reduce the number of network cycles
+		-- persist some data on client side
+		-- communication between the components
+	-- services -- then why ngrx ?
+		-- ngRx -- works only with observables in a performant manner
+			-- more components and many services; =fetch the data many services
+			-- services -- two way flow of data ;
+				ngRx -- unidirectional
+				more stable data changes; who has changed, how it has changed
+			-- immutable data 
+			-- components who have subscribed will be implicitly notified -- 
+			-- zone.js -- looking out for changes
+				ngRx will work with no zone.js
+				In v18.x -- no zone.js
+
+	-- immutability, unidirectional flow of data
+	-- immutable -- once assigned, cannot change the value  
+	-- Lot of maintainability (limitation)
+
+In java
+string -- immutable
+string str1="java";
+str1="javascript";
+SOP(str1);//javascript
+
+Working:
+str1 is point to memory location x which holds the value="java"
+str1 is point to memory location y which holds the value="javascript"
+Strings are immutable 
+"java" will remain at the same memory location x. javascript will not replace the value at x but will be created at a new memory location
+
+int i=10;
+i=20;
+SOP(i);//20
+i will be pointing to a memory location z which holds the value 10;
+At z, the value 10 will be replaced by 20;
+
+
+why ngrx?
+SHARI
+	Shared -- shared data
+	Hydrated -- persist the data and get the initial data from external storage
+	Available -- state in different routes; renter the route -- data should be persisted
+	Retrieved -- state can be retrieved with a side effect
+	Impacted -- state which is changed by multiple sources
+
+
+ngRx:
+	Store, Reducer, Action, Subscribe, dispatch, select
+Store -- Hold the centralised data -- state -- In form of observables
+reducer 
+	--pure function
+		function with no side effects
+	-- take into 2 params -- state and actions
+	-- Return the new state by performing the given action on the state it has received 
+	-- Only the reducer can do the modifications on the state and return the new state
+	
+Action -- What is the processing to be performed on the state
+	-- type -- nature of processing
+	-- Optional payload -- data which is needed for processing
+subscribe -- 
+dispatch -- dispatch an action; internally implicitly call the reducer with the state and respective action
+select -- get a slice of the state
+
+// create some actions or group some actions together called as action group
+var productsAction=createActionGroup({
+source:"Products",
+events:{
+	"Add Product":props<{newProduct:Products}>(),
+	"Edit Product":props<{productToBeEdited:Products}>(),
+	"Delete Product":props<{productIdToBeDeleted:number}>(),
+	
+}
+})
+
+var productsApiAction=createActionGroup({
+source: "Products Api",
+events:{
+	"Get Products List":props<{productsArr:Array<Products>}>()
+}
+})
+//create a reducer
+	createReducer(initialState,
+		on(productsAction.addProduct,(state,props)=>{
+			state.productsArr.push(props);
+			return {...state};
+	}
+)
+
+function myReducer(state,action)
+{
+	var newState={...state};
+	switch(action.type)
+	{
+		case "addProduct":
+			{
+				newstate.productsArr.push(action.props);
+				break;
+			}
+		case "editProduct":{
+				var pos=newState.productsArr.findIndex(item=>item.productId == action.props.productToBeEdited.productId);
+				if(pos>=0)
+				{
+					newState.productsArr[pos]=action.props;
+				}
+				
+}
+		}
+	}
+	return newState;	
+}
+
+// create the store
+	
+// based on user's interactions dispatch some actions and also do the select so that i can get the data
+
+dispatch(productsAction.addProduct({productId:101}))
+
+Install the module:
+npm install @ngrx/store@16.3.0
+
+
+
