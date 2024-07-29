@@ -1,0 +1,48 @@
+npm install @ngrx/store@16.3.0
+1. Create a folder inside src called as Store
+2. Create 2 subfolders called as Actions and Redicers inside Store
+3. Create Products.ts --- model file
+4. Create products.actions.ts inside the Actions folder
+5. Create productsCollection.reducer.ts inside the Reducers folder
+6. Create productsChange.reducer.ts inside the Reducers folder
+7. Create a service called as productsNgrxApi
+8. Create a new folder called as Selectos inside the store folder
+9. Create a products.selector.ts inside the Selectors folder
+10. In app.module.ts add the following to the imports
+ StoreModule.forRoot(
+      {
+        "productsManage":productsChangeReducer,
+        "productsApi":productsCollectionReducer
+      })
+      
+11. Generate a component modifyProduct
+12. Create  the server
+		Move to the server's folder
+    npm install express
+    npm install cors
+    Create 2 files index.js, Products.js
+    Start the server : node index.js
+13. Based on the requirements, dispatch the action or use the selector to get the slice of data
+
+
+ngRx
+1. data communication between components
+2. Centralised way of managing the data on client side
+3. Return the store data in the form of observable 
+	-- Whenever the reducer returns the new state , everyone who has subscribed to the sleectors will get the newly emitted data(newState);
+4. Data persistence
+5. Storing the data from the db. Avoid some network calls. cache of the data in the db
+6. Unidirectional flow of data
+	who can modify the state -- only the reducer; only way to call the reducer -- by dispatching the action
+	-- access the data in the store -- work with selectors
+
+Limitations:
+	-- managing many files and folders
+	-- setting up the store is a tedious process
+	-- 
+
+What kind of data to store in the store
+	-- cache layer of the data (Non editable data)
+	-- User specific data (cartArr, login details)
+	-- data from different sources, map together and display
+
