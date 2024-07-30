@@ -1,0 +1,123 @@
+Performance of an Angular Application:
+	-- Fast loading of the screen
+		-- Initial load faster
+			-- keeping Memory(App size) Optimal
+				
+		-- User Interaction -- faster
+			-- network calls -- faster
+			-- server time
+			-- response -- populate UI based on response
+	-- Ease of use; User experience; navigation;
+	-- caching of data ; static data; pre loading of data before the route is loaded
+	-- Async behaviour (Observables)
+	-- Memory 
+		-- tree shaking, uglification and minification, lazy loading of modules and components, prefetch the required data before hitting the route, store as a cache layer
+	-- Lazy loading 
+	-- responsive web page
+	-- Indendation,Readability, Understandability --Human
+		-- System/computer -- NO
+		-- Memory consumption is low
+			
+	minification(replace big name with smaller alias names) and uglification(remove the white space, remove the unwanted characters)
+		-- user components
+		-- node_modules
+	-- tree shaking
+		-- Unused/unreferenced components will not be added to the application
+		-- default bahaviour from v17
+	-- change Detection
+
+
+var myFavouriteColourOutOftheRainbowColours="violet";
+function changemyFavouriteColourOutOftheRainbowColours(newColour)
+{
+	myFavouriteColourOutOftheRainbowColours=newColour;
+}
+changemyFavouriteColourOutOftheRainbowColours("yellow");
+
+
+Bundling process:
+Application: source code, assets,node_modules(local copy of dependencies)
+
+Loading the app in the browser
+compiled source code, assets, node_modules
+Chunking ; 
+Create a single chunk of all the source code and the node_modules
+or create separate chunks -- 
+Best practice -- create separate chunks
+1. Reduce the size
+Scenario 1: Load a single file which is 10 mb
+Scenario 2: Load multiple files parallelly which is together 10 mb
+	  
+Feature Modules:
+1. Created a module
+ng g module pay
+	Create a feature module with routing
+		ng g module fresh --route fresh --module app.module
+			CREATE src/app/fresh/fresh-routing.module.ts (339 bytes)
+CREATE src/app/fresh/fresh.module.ts (350 bytes)
+CREATE src/app/fresh/fresh.component.html (20 bytes)
+CREATE src/app/fresh/fresh.component.spec.ts (552 bytes)
+CREATE src/app/fresh/fresh.component.ts (198 bytes)
+CREATE src/app/fresh/fresh.component.css (0 bytes)
+UPDATE src/app/app-routing.module.ts (4379 bytes)
+2. Create a component as part of pay module
+ng g c pay/payHome
+3. Export the required components from the pay module
+4. Import this feature module in app.module.ts as part of the imports metadata
+5. 
+
+
+Differences between fresh and pay module
+1. In pay module, payHome component is exported. In fresh module, fresh component is not exported
+2. PayModule is added to imports of app.module
+	-- Add the payHome component in any of components of app.module .
+	-- Add the payHome component to routing of app.module
+   Fresh module is lazily imported. Hence not added as part of imports in app.module
+	-- Add the fresh component in in any of components of app.module -- NO .
+	-- Add the fresh component to routing of app.module using loadChildren
+
+3. As part of fresh.routing.module.ts , we will add the routes array using forChild()
+forChild()--Creates a module with all the router directives and a provider registering routes, without creating a new Router service. When registering for submodules and lazy-loaded submodules, create the NgModule 
+
+
+Change detection:
+	zone.js -- signalling mechanism which is used to detect when an app might have changes
+	-- Many cycle of change detection
+	-- Reduce the number of times change detection is happening
+		Use OnPush strategy
+			Automatic change detection
+			Initiate the change detection when
+			-- Reference should change for @Input . Compare using ==
+
+Manually call the change detection process 
+	1. Run manually
+		inject ChangeDetectorRef
+		Use markForCheck in the subscription of observable
+		
+	2. Perform operations(like click events or changing the primitive data from parent) which will trigger the change detection
+			
+
+
+const str1="sara";
+str1="jack";// throw an error ; trying to change the value of const
+console.log(str1);
+
+const emp1={empId:101,empName:"sara"};
+emp1.empName="jack";// No error ; changing the property; not changing the reference
+console.log(emp1);//{empId:101,empName:"jack"};
+
+const emp2={empId:101,empName:"sara"};
+emp2={empName:"jack"};// error ;  changing the reference
+console.log(emp2);//
+
+
+Animation -- 
+Testing
+Recap 
+Q&A
+
+
+
+
+
+
