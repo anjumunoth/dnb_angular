@@ -1,0 +1,100 @@
+Change detection strategy:
+	Default: CD is triggered
+		-- whenever there is an event is triggered
+		-- whenever there is a change in @Input property
+		-- whenever there is an async task
+	OnPush -- CD is triggered
+		-- whenever the data's reference to the @Input changes
+
+Animation : movement 
+		styles
+		time/duration
+
+
+Component load:
+Div
+	-- Text 
+	-- Width and height
+	-- BgColour
+What is to be animated -- div
+What is animation to be done 
+	-- colour change
+	-- div height
+	-- text has to be changed
+	-- time duration
+
+when should the animation be done -- on the click of button
+
+state("open",style({
+	height:'300px',
+	backgroundColor:"yellow",
+	opacity:1
+}))	
+
+state("closed",style({
+	height:"150px",
+	backgroundColor:"blue",
+	opacity:0.5
+}))
+
+animate(duration)
+animate(duration delay easing)
+
+transition('open =>closed',[animate('2s')])
+transition('open <=>closed',[animate('5s')])
+transition('closed =>open',[animate('2s')])
+transition('*=>closed',[animate('5s')]
+transition('open=>void',[animate('5s')]
+transition('closed => open',[animate('5s',style({
+      transform:'scale(1.5)'
+    })
+
+transition("closed=> open", [animate('5s', keyframes(
+        [
+          style({ backgroundColor: "red", offset: 0 }),
+          style({ backgroundColor: "blue", offset: 0.2 }),
+          style({ backgroundColor: "orange", offset: 0.3 }),
+          style({ backgroundColor: "black", offset: 1 })
+        ]
+      ))])
+
+
+
+Trigger the animation -- button click
+
+
+Unit testing:
+Karma  and jasmine
+
+describe -- create a test suite
+it -- create a test spec
+expect -- to check whether expected and actual result are the same
+
+describe(description string, spec definitions as a function)
+
+it(expectation string,assertioncallback)
+
+beforeEach -- perform any setup before the test spec
+afterEach  -- perform any clean up after every test spec
+
+beforeAll -- perform any setup before all the test spec; executed only once for any describe
+
+AfterAll-- perform any clean up after all the test specs have completed; executed only once for any describe
+
+TestBed
+	--configureTestingModule
+		-- same kind of metadata which is provided in @NgModule decorator
+	-- create components
+	-- create services
+	-- inject dependencies
+
+
+
+
+
+
+
+
+		
+
+
